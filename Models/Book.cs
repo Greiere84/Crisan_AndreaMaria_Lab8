@@ -14,7 +14,8 @@ namespace Crisan_AndreaMaria_Lab8.Models
 
         [Display(Name = "Book Title")]
         public string Title { get; set; }
-        [RegularExpression(@"^[A-Z][a-z]+\s[A-Z][a-z]+$", ErrorMessage = "Numele autorului trebuie sa fie de forma 'Prenume Nume'"), Required, StringLength(50, MinimumLength = 3)]
+
+        [RegularExpression(@"^[A-Z][a-z]+\s[A-Z][a-z]+$", ErrorMessage = "Numele autorului trebuie sa fie de forma 'Prenume Nume'"), Required, StringLength(100, MinimumLength = 3)]
         //^ marcheaza inceputul sirului de caractere
         //[A-Z][a-z]+ prenumele -litera mare urmata de oricate litere mici
         //\s spatiu
@@ -28,7 +29,6 @@ namespace Crisan_AndreaMaria_Lab8.Models
 
         [DataType(DataType.Date)]
         public DateTime PublishingDate { get; set; }
-
 
         public int PublisherID { get; set; }
         public Publisher Publisher { get; set; }   //navigation property

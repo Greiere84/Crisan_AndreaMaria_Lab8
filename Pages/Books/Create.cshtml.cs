@@ -34,18 +34,8 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string[] selectedCategories)
         {
-            /* if (!ModelState.IsValid)
-             {
-                 return Page();
-             }
-
-             _context.Book.Add(Book);
-             await _context.SaveChangesAsync();
-
-             return RedirectToPage("./Index");
-            */
             var newBook = new Book();
             if (selectedCategories != null)
             {
@@ -63,7 +53,7 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
             newBook,
             "Book",
             i => i.Title, i => i.Author,
-            i => i.Price, i => i.PublishingDate, i => i.PublisherID))
+            i => i.Price, i => i.PublishingDate, i => i.PublisherID, i => i.BookCategories))
             {
                 _context.Book.Add(newBook);
                 await _context.SaveChangesAsync();

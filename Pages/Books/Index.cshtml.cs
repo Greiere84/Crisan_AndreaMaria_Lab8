@@ -42,12 +42,5 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
                 BookD.Categories = book.BookCategories.Select(s => s.Category);
             }
         }
-
-        public async Task OnGetAsync()
-        {
-            Book = await _context.Book
-                .Include(b=>b.Publisher)
-                .ToListAsync();
-        }
     }
 }

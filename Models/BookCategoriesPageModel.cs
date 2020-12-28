@@ -14,8 +14,7 @@ namespace Crisan_AndreaMaria_Lab8.Models
         Book book)
         {
             var allCategories = context.Category;
-            var bookCategories = new HashSet<int>(
-            book.BookCategories.Select(c => c.BookID));
+            var bookCategories = new HashSet<int>(book.BookCategories.Select(c => c.BookID));
             AssignedCategoryDataList = new List<AssignedCategoryData>();
             foreach (var cat in allCategories)
             {

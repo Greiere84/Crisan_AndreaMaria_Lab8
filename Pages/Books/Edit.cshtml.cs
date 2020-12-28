@@ -35,8 +35,6 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
-
             if (Book == null)
             {
                 return NotFound();
@@ -53,30 +51,7 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int? id, string[] selectedCategories)
         {
-            /* if (!ModelState.IsValid)
-             {
-                 return Page();
-             }
-
-             _context.Attach(Book).State = EntityState.Modified;
-
-             try
-             {
-                 await _context.SaveChangesAsync();
-             }
-             catch (DbUpdateConcurrencyException)
-             {
-                 if (!BookExists(Book.ID))
-                 {
-                     return NotFound();
-                 }
-                 else
-                 {
-                     throw;
-                 }
-             }
-
-             return RedirectToPage("./Index");*/
+           
                 if (id == null)
                 {
                     return NotFound();
@@ -86,6 +61,7 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
                 .Include(i => i.BookCategories)
                 .ThenInclude(i => i.Category)
                 .FirstOrDefaultAsync(s => s.ID == id);
+
                 if (bookToUpdate == null)
                 {
                     return NotFound();
@@ -102,11 +78,6 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
                 UpdateBookCategories(_context, selectedCategories, bookToUpdate);
                 PopulateAssignedCategoryData(_context, bookToUpdate);
                 return Page();
-        }
-    
-        private bool BookExists(int id)
-        {
-            return _context.Book.Any(e => e.ID == id);
         }
     }
 }
