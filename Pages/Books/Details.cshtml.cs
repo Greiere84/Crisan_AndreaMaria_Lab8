@@ -30,6 +30,8 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
 
             Book = await _context.Book
                 .Include(b=>b.Publisher)
+                .Include(b=>b.BookCategories)
+                .ThenInclude(b=>b.Category)
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Book == null)
