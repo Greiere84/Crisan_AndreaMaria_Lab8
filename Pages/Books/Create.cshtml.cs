@@ -53,7 +53,7 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
             newBook,
             "Book",
             i => i.Title, i => i.Author,
-            i => i.Price, i => i.PublishingDate, i => i.PublisherID, i => i.BookCategories))
+            i => i.Price, i => i.PublishingDate, i => i.PublisherID))
             {
                 _context.Book.Add(newBook);
                 await _context.SaveChangesAsync();
