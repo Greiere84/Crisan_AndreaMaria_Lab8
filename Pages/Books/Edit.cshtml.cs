@@ -67,7 +67,7 @@ namespace Crisan_AndreaMaria_Lab8.Pages.Books
                     return NotFound();
                 }
                 if (await TryUpdateModelAsync<Book>(
-                bookToUpdate, "Book", i => i.Title, i => i.Author, i => i.Price, i => i.PublishingDate, i => i.Publisher))
+                bookToUpdate, "Book", i => i.Title, i => i.Author, i => i.Price, i => i.PublishingDate, i => i.PublisherID))
                 {
                     UpdateBookCategories(_context, selectedCategories, bookToUpdate);
                     await _context.SaveChangesAsync();
